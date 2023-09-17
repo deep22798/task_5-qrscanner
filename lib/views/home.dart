@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,17 +22,22 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: Center(
-            child: Column(mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Lottie.asset('assets/qr.json',width: MediaQuery.sizeOf(context).width/2),
-                MaterialButton(
-                  onPressed: ()=>Navigator.pushNamed(context, 'qr'),
-                  color: Colors.teal,
-                  child: Center(child: Text("Scan Here",style: TextStyle(color: Colors.white)),),)
-              ],
-            )
+      body: WillPopScope(
+        onWillPop: () {
+          exit(0);
+        },
+        child: SafeArea(
+          child: Center(
+              child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset('assets/qr.json',width: MediaQuery.sizeOf(context).width/2),
+                  MaterialButton(
+                    onPressed: ()=>Navigator.pushNamed(context, 'qr'),
+                    color: Colors.teal,
+                    child: Center(child: Text("Scan Here",style: TextStyle(color: Colors.white)),),)
+                ],
+              )
+          ),
         ),
       ),
 
