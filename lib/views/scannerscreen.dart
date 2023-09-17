@@ -26,7 +26,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
       body: SafeArea(
         child: WillPopScope(
           onWillPop: () {
-            Navigator.popAndPushNamed(context, '/');
+            Navigator.popAndPushNamed(context, '/home');
             return Future.value(false);
           },
           child: Center(
